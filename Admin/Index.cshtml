@@ -1,0 +1,25 @@
+
+@{
+    ViewBag.Title = "YeniAdmin";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<form class="form-group" method="post">
+    <div>
+        <label>YÖNETİCİ E-POSTA</label>
+        <input type="email" class="form-control" name="ADMINEPOSTA" placeholder="Yönetici E-Posta Adresini Yazınız" required="" maxlength="45" />
+    </div>
+    <div>
+        <label>YÖNETİCİ ŞİFRE</label>
+        <input type="text" class="form-control" name="ADMINSIFRE" placeholder="Yönetici Şifresini Yazınız" required="" maxlength="45" />
+    </div>
+    <div style="margin-top:15px">
+        <button class="btn btn-info" id="btn1">YÖNETİCİ EKLE</button>
+    </div>
+    <script>
+        $('#btn1').click(function () {
+            alert('Yönetici Ekleme İşlemi Başarıyla Gerçekleştirildi...!');
+        });
+    </script>
+</form>
+
