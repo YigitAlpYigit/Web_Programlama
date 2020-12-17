@@ -1,0 +1,20 @@
+
+@{
+    ViewBag.Title = "YeniKategori";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<form class="form-group" method="post">
+    <div>
+        <label>KATEGORİ ADI</label>
+        <input type="text" class="form-control" name="KATEGORIAD" placeholder="Kategori Adını Yazınız" required="" maxlength="45" />
+    </div>
+    <div style="margin-top:15px">
+        <button class="btn btn-info" id="btn1">KATEGORİ EKLE</button>
+    </div>
+    <script>
+        $('#btn1').click(function () {
+            alert('Kategori Ekleme İşlemi Başarıyla Gerçekleştirildi...!');
+        });
+    </script>
+</form>
