@@ -1,0 +1,51 @@
+﻿@model HayvanSahiplendirmeSitesi.Models.Entity.TBLHAYVAN
+
+@{
+    ViewBag.Title = "HayvanGetir";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@using (Html.BeginForm("Guncelle", "Hayvan", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.HAYVANID)
+        @Html.TextBoxFor(m => m.HAYVANID, new { @class = "form-control", @readonly = true })
+        <br />
+        @Html.LabelFor(m => m.HAYVANAD)
+        @Html.TextBoxFor(m => m.HAYVANAD, new { @class = "form-control", @required = "required", @maxlength = "45" })
+        <br />
+        @Html.LabelFor(m => m.HAYVANKATEGORI)
+        @Html.DropDownListFor(m => m.TBLKATEGORILER.KATEGORIID, (List<SelectListItem>)ViewBag.dgr, new { @class = "form-control"})
+        <br />
+        @Html.LabelFor(m => m.HAYVANYAS)
+        @Html.TextBoxFor(m => m.HAYVANYAS, new { @class = "form-control", @required = "required", @maxlength = "45" })
+        <br />
+        @Html.LabelFor(m => m.HAYVANCINS)
+        @Html.TextBoxFor(m => m.HAYVANCINS, new { @class = "form-control", @required = "required", @maxlength = "45" })
+        <br />
+        @Html.LabelFor(m => m.HAYVANCINSIYET)
+        @Html.TextBoxFor(m => m.HAYVANCINSIYET, new { @class = "form-control", @required = "required", @maxlength = "45" })
+        <br />
+        @Html.LabelFor(m => m.HAYVANIC)
+        @Html.TextBoxFor(m => m.HAYVANIC, new { @class = "form-control", @maxlength = "45" })
+        <br />
+        @Html.LabelFor(m => m.HAYVANRESIM_1)
+        @Html.TextBoxFor(m => m.HAYVANRESIM_1, new { @class = "form-control", @required = "required", @maxlength = "45" })
+        <br />
+        @Html.LabelFor(m => m.HAYVANRESIM_2)
+        @Html.TextBoxFor(m => m.HAYVANRESIM_2, new { @class = "form-control"})
+        <br />
+        @Html.LabelFor(m => m.HAYVANRESIM_3)
+        @Html.TextBoxFor(m => m.HAYVANRESIM_3, new { @class = "form-control"})
+        <br />
+        @Html.LabelFor(m => m.HAYVANRESIM_4)
+        @Html.TextBoxFor(m => m.HAYVANRESIM_4, new { @class = "form-control"})
+        <br />
+        @Html.LabelFor(m => m.HAYVANRESIM_5)
+        @Html.TextBoxFor(m => m.HAYVANRESIM_5, new { @class = "form-control"})
+        <br />
+    </div>
+    <div>
+        <button class="btn btn-warning">HAYVANI GÜNCELLE</button>
+    </div>
+}

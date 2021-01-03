@@ -1,0 +1,54 @@
+﻿@model HayvanSahiplendirmeSitesi.Models.Entity.TBLHAYVAN
+@{
+    ViewBag.Title = "YeniHayvan";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<form class="form-group" method="post">
+    <div>
+        <label>HAYVAN ADI</label>
+        <input type="text" class="form-control" name="HAYVANAD" placeholder="Hayvanın Adını Yazınız" required="" maxlength="30" />
+        <br />
+        <label>HAYVAN KATEGORİSİ</label>
+        @Html.DropDownListFor(m => m.TBLKATEGORILER.KATEGORIID, (List<SelectListItem>)ViewBag.dgr, new { @class = "form-control" })
+        <br />
+        <label>HAYVAN YAŞI</label>
+        <input type="number" class="form-control" name="HAYVANYAS" placeholder="Hayvanın Yaşını Yazınız" required="" />
+        <br />
+        <label>HAYVAN CİNSİ</label>
+        <input type="text" class="form-control" name="HAYVANCINS" placeholder="Hayvanın Cinsini Yazınız" required="" />
+        <br />
+        <label>HAYVAN CİNSİYETİ</label>
+        <input type="text" class="form-control" name="HAYVANCINSIYET" placeholder="Ürün Cinsiyetini Yazınız" required="" />
+        <br />
+        <label>HAYVAN İÇİNDEKİLER</label>
+        <textarea type="text" class="form-control" name="HAYVANIC" placeholder="Hayvanın Diğer Bilgilerini Yazınız"></textarea>
+        <br />
+        <label>HAYVAN RESİM 1</label>
+        <textarea type="text" class="form-control" name="HAYVANRESIM_1" placeholder="Hayvanın Resim Adresini Yazınız" required=""></textarea>
+        <br />
+        <label>HAYVAN RESİM 2</label>
+        <textarea type="text" class="form-control" name="HAYVANRESIM_2" placeholder="Hayvanın Resim Adresini Yazınız"></textarea>
+        <br />
+        <label>HAYVAN RESİM 3</label>
+        <textarea type="text" class="form-control" name="HAYVANRESIM_3" placeholder="Hayvanın Resim Adresini Yazınız"></textarea>
+        <br />
+        <label>HAYVAN RESİM 4</label>
+        <textarea type="text" class="form-control" name="HAYVANRESIM_4" placeholder="Hayvanın Resim Adresini Yazınız"></textarea>
+        <br />
+        <label>HAYVAN RESİM 5</label>
+        <textarea type="text" class="form-control" name="HAYVANRESIM_5" placeholder="Hayvanın Resim Adresini Yazınız"></textarea>
+    </div>
+    <br />
+    <div>
+        <button class="btn btn-info" id="btn1">Hayvan EKLE</button>
+    </div>
+    <script>
+        $('#btn1').click(function () {
+            alert('Ürüm Ekleme İşlemi Başarıyla Gerçekleştirildi...!');
+        });
+    </script>
+</form>
+
+
