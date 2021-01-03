@@ -1,0 +1,101 @@
+﻿@model HayvanSahiplendirmeSitesi.Models.ViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>SATINALMASAHİPLEN</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <div style="position:fixed;width:100%;z-index:1">
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/Anasayfa/Index" style="color:white">#SATINALMASAHİPLEN</a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">@HayvanSahiplendirmeSitesi.Resources.HomeText.Kategoriler<span class="caret"></span></a>
+                            <ul class="dropdown-menu" style="background-color:antiquewhite">
+                                @foreach (var item in Model.Kategori)
+                                {
+                                    <li><a href="/Anasayfa/Index/#@item.KATEGORIID" style="color:black"><b>@item.KATEGORIAD</b></a></li>
+                                }
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">@HayvanSahiplendirmeSitesi.Resources.HomeText.Hayvanlar<span class="caret"></span></a>
+                            <ul class="dropdown-menu pre-scrollable" style="background-color:antiquewhite">
+                                @foreach (var item2 in Model.Hayvan)
+                                {
+                                    <li><a href="/Anasayfa/Index/#@item2.HAYVANID" style="color:black"><b>@item2.HAYVANAD</b></a></li>
+                                }
+                            </ul>
+                        </li>
+                        <li>@Html.ActionLink("Türkçe", "Change", "Language", new { LanguageAbbrevation = "tr-TR" }, null)</li>
+                        <li>@Html.ActionLink("English", "Change", "Language", new { LanguageAbbrevation = "en" }, null)</li>
+                    </ul>
+
+                    @{ var sayı = 0; }
+                    @foreach (var uyegirisi in Model.Alıcı)
+                    {
+                        if (Request.UserHostAddress == uyegirisi.KULLANICIIP)
+                        {
+                            using (Html.BeginForm("SahiplenmeGuncelle", "Musteri", FormMethod.Post))
+                            {
+                                <input type="text" value="@uyegirisi.KULLANICIID" style="display:none;" name="KULLANICIID" />
+                                <input type="text" value="0" style="display:none;" name="KULLANICIIP" />
+                                <ul class="nav navbar-nav navbar-right">
+                                    <li class="dropdown">
+                                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">@uyegirisi.KULLANICIEPOSTA<span class="caret"></span></a>
+                                        <ul class="dropdown-menu" style="background-color:antiquewhite;text-align:center">
+                                            <li><button class="btn btn-warning"><b>@HayvanSahiplendirmeSitesi.Resources.HomeText.Cikis</b></button></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            }
+                        }
+                        else
+                        {
+                            sayı++;
+                        }
+                        if (sayı == Model.Alıcı.Count()) //son değerde olduğumu ve hala eşleşme olmadığını öğrendim
+                        {
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a href="/Guvenlik/UyeGirisYap" style="color:red"><b>@HayvanSahiplendirmeSitesi.Resources.HomeText.Giris</b></a></li>
+                            </ul>
+                            break;
+                        }
+                    }
+                </div>
+                               
+            </div>
+        </nav>
+    </div>
+    <div>
+        @RenderBody()
+    </div>
+    <br />
+    <footer>
+        <p style="text-align:center">
+            <a class="btn btn-info" href="/Musteri/Index">Admin Paneli</a>
+        </p>
+    </footer>
+</body>
+</html>
