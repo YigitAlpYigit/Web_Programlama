@@ -1,0 +1,96 @@
+﻿
+@using HayvanSahiplendirmeSitesi.Models.Entity
+@model  List<TBLALICI>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<head>
+</head>
+<body>
+    <table id="tbl1" class="table table-bordered">
+        <thead>
+            <tr>
+                <th>SAHİPLENEN KİŞİNİN ID</th>
+                <th>SAHİPLENEN KİŞİNİN ADI</th>
+                <th>SAHİPLENEN KİŞİNİN SOYADI</th>
+                <th>SAHİPLENEN KİŞİNİN E-POSTASI</th>
+                <th>SAHİPLENEN KİŞİNİN TELEFONU</th>
+                <th>SİL</th>
+                <th>GÜNCELLE</th>
+                <th>DETAYLAR</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var mstr in Model)
+            {
+                if (mstr.KULLANICIADRES != null)
+                {
+                <tr>
+                    <th>@mstr.KULLANICIID</th>
+                    <td>@mstr.KULLANICIAD</td>
+                    <td>@mstr.KULLANICISOYAD</td>
+                    <td><textarea rows="2" readonly="yes">@mstr.KULLANICIEPOSTA</textarea></td>
+                    <td>@mstr.KULLANICITEL</td>
+                    <td>@Html.ActionLink("SİL", "SIL", new { id = mstr.KULLANICIID }, new { @class = "btn btn-danger", onclick = "return confirm('Silmek İçin Lütfen Onaylayın')" })</td>
+                    <td><a href="/MUSTERI/MusteriGetir/@mstr.KULLANICIID" class="btn btn-success">GÜNCELLE</a></td>
+                    <td><a href="#" class="btn btn-info" data-toggle="modal" data-target="#B_@mstr.KULLANICIID">DETAYLAR</a></td>
+                </tr>
+                }
+            }
+        </tbody>
+    </table>
+
+    <div class="container">
+        <a href="/MUSTERI/YENIMUSTERI/" class="btn btn-primary">YENİ SAHİPLENEN KİŞİ EKLE</a>
+    </div>
+    @foreach (var mstr2 in Model)
+    {
+        <div class="modal" id="B_@mstr2.KULLANICIID">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title" style="text-align:center"> SAHİPLENEN KİŞİNİN DETAYLARI </h2>
+                    </div>
+                    <form>
+                        <div class="modal-body">
+                            <label>SAHİPLENEN KİŞİNİN ADI ve SOYADI</label>
+                            <label name="MstrAd" class="form-control" readonly="yes">@mstr2.KULLANICIAD @mstr2.KULLANICISOYAD</label>
+                            <br />
+                            <label>SAHİPLENEN KİŞİNİN E-POSTASI</label>
+                            <label name="MstrEposta" class="form-control" readonly="yes">@mstr2.KULLANICIEPOSTA</label>
+                            <br />
+                            <label>SAHİPLENEN KİŞİNİN TELEFONU</label>
+                            <label name="MstrTel" class="form-control" readonly="yes">@mstr2.KULLANICITEL</label>
+                            <br />
+                            <div class="form-group">
+                                <label>SAHİPLENEN KİŞİNİN ADRESİ</label>
+                                <b><textarea class="form-control" rows="2" readonly="yes">@mstr2.KULLANICIADRES</textarea></b>
+                            </div>
+                            <div class="form-group">
+                                <label>SAHİPLENEN KİŞİNİN SAHİPLENDİĞİ HAYVAN</label>
+                                <b><textarea class="form-control" rows="5" readonly="yes">@mstr2.KULLANICIALIM</textarea></b>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    }
+</body>
+
+
+
+<link href="~/Content/DataTables/css/dataTables.bootstrap4.css" rel="stylesheet" />
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
+
+<script>
+    $('#tbl1').dataTable({});
+</script>

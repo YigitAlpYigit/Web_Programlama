@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "YeniMusteri";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<form class="form-group" method="post">
+    <div>
+        <label>SAHİPLENEN KİŞİNİN ADI</label>
+        <input type="text" class="form-control" name="KULLANICIAD" placeholder="Sahiplenen Kişinin Adını Yazınız" required="" maxlength="45" />
+        <br />
+        <label>SAHİPLENEN KİŞİNİN SOYADI</label>
+        <input type="text" class="form-control" name="KULLANICISOYAD" placeholder="Sahiplenen Kişinin Soyadını Yazınız" required="" maxlength="45" />
+        <br />
+        <label>SAHİPLENEN KİŞİNİN EPOSTASI</label>
+        <input type="email" class="form-control" name="KULLANICIEPOSTA" placeholder="Sahiplenen Kişinin E-postasını Yazınız" required="" maxlength="45" />
+        <br />
+        <label>SAHİPLENEN KİŞİNİN TELEFONU</label>
+        <input type="tel" class="form-control" name="KULLANICITEL" placeholder="Sahiplenen Kişinin Telefon Numarasını Yazınız" required="" maxlength="11" />
+        <br />
+        <label>SAHİPLENEN KİŞİNİN ADRES</label>
+        <textarea type="text" class="form-control" name="KULLANICIADRES" placeholder="Sahiplenen Kişinin Adresini Yazınız" required=""></textarea>
+        <br />
+        <label>SAHİPLENİLEN HAYVAN</label>
+        <textarea type="text" class="form-control" name="KULLANICIALIM" placeholder="Sahiplenilen Hayvanı Yazınız" required=""></textarea>
+        <br />
+    </div>
+    <div style="margin-top:15px">
+        <button class="btn btn-info" id="btn1">SAHİPLENEN KİŞİYİ EKLE</button>
+    </div>
+    <script>
+        $('#btn1').click(function () {
+            alert('Müşteri Ekleme İşlemi Başarıyla Gerçekleştirildi...!');
+        });
+    </script>
+</form>
+
