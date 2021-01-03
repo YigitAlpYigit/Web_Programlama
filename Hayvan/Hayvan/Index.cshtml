@@ -1,0 +1,126 @@
+﻿@using HayvanSahiplendirmeSitesi.Models.Entity
+@model List<TBLHAYVAN>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<head>
+</head>
+
+
+<body>
+    <table id="tbl1" class="table table-bordered">
+        <thead>
+            <tr>
+                <th>HAYVAN ID</th>
+                <th>HAYVAN ADI</th>
+                <th>HAYVAN KATEGORİSİ</th>
+                <th>HAYVAN YAŞI</th>
+                <th>HAYVAN CİNSİ</th>
+                <th>HAYVAN CİNSİYETİ</th>
+                <th>SİL</th>
+                <th>GÜNCELLE</th>
+                <th>DETAYLAR</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var urn in Model)
+            {
+                <tr>
+                    <tH>@urn.HAYVANID</tH>
+                    <td>@urn.HAYVANAD</td>
+                    <td>@urn.TBLKATEGORILER.KATEGORIAD</td>
+                    <td>@urn.HAYVANYAS</td>
+                    <td>@urn.HAYVANCINS</td>
+                    <td>@urn.HAYVANCINSIYET</td>
+                    <td>@Html.ActionLink("SİL", "SIL", new { id = urn.HAYVANID }, new { @class = "btn btn-danger", onclick = "return confirm('Silmek İçin Lütfen Onaylayın')" })</td>
+                    <td><a href="/HAYVAN/HayvanGetir/@urn.HAYVANID" id="@urn.HAYVANID" class="btn btn-success">GÜNCELLE</a></td>
+                    <td><a href="#" class="btn btn-info" data-toggle="modal" data-target="#B_@urn.HAYVANID">DETAYLAR</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div class="container">
+        <a href="/HAYVAN/YENIHAYVAN/" class="btn btn-primary">YENİ HAYVAN EKLE</a>
+    </div>
+
+    @foreach (var urn2 in Model)
+    {
+        <div class="modal" id="B_@urn2.HAYVANID">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title" style="text-align:center"> HAYVAN DETAYLARI </h2>
+                    </div>
+
+                    <form>
+                        <div class="modal-body">
+                            <label>HAYVAN ADI</label>
+                            <label name="HayvanAd" class="form-control" readonly="">@urn2.HAYVANAD</label>
+                            <br />
+                            <label>HAYVAN KATEGORİSİ</label>
+                            <label name="HayvanKategori" class="form-control" readonly="">@urn2.TBLKATEGORILER.KATEGORIAD</label>
+                            <br />
+                            <label>HAYVAN YAŞI</label>
+                            <label name="HayvanYas" class="form-control" readonly="">@urn2.HAYVANYAS</label>
+                            <br />
+                            <label>HAYVAN CİNSİ</label>
+                            <label name="HayvanCins" class="form-control" readonly="">@urn2.HAYVANCINS</label>
+                            <br />
+                            <label>HAYVAN CİNSİYETİ</label>
+                            <label name="HayvanCinsiyet" class="form-control" readonly="">@urn2.HAYVANCINSIYET</label>
+                            <br />
+                            <div class="form-group">
+                                <label>ÜRÜN RESİM ADRESİ 1</label>
+                                <b><textarea class="form-control" rows="2" readonly="">@urn2.HAYVANRESIM_1</textarea></b>
+                            </div>
+                            <br />
+                            <div class="form-group">
+                                <label>ÜRÜN RESİM ADRESİ 2</label>
+                                <b><textarea class="form-control" rows="2" readonly="">@urn2.HAYVANRESIM_2</textarea></b>
+                            </div>
+                            <br />
+                            <div class="form-group">
+                                <label>ÜRÜN RESİM ADRESİ 3</label>
+                                <b><textarea class="form-control" rows="2" readonly="">@urn2.HAYVANRESIM_3</textarea></b>
+                            </div>
+                            <br />
+                            <div class="form-group">
+                                <label>ÜRÜN RESİM ADRESİ 4</label>
+                                <b><textarea class="form-control" rows="2" readonly="">@urn2.HAYVANRESIM_4</textarea></b>
+                            </div>
+                            <br />
+                            <div class="form-group">
+                                <label>ÜRÜN RESİM ADRESİ 5</label>
+                                <b><textarea class="form-control" rows="2" readonly="">@urn2.HAYVANRESIM_5</textarea></b>
+                            </div>
+                            <br />
+                            <div class="form-group">
+                                <label>HAYVAN İÇİNDEKİLER</label>
+                                <b><textarea class="form-control" rows="3" readonly="">@urn2.HAYVANIC</textarea></b>
+                            </div>
+                            <br />
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    }
+</body>
+
+
+
+<link href="~/Content/DataTables/css/dataTables.bootstrap4.css" rel="stylesheet" />
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
+
+<script>
+    $('#tbl1').dataTable({});
+</script>
