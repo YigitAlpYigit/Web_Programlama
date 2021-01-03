@@ -1,0 +1,75 @@
+﻿@model  HayvanSahiplendirmeSitesi.Models.Entity.TBLALICI
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>ÜYE GİRİŞİ</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="keywords" content="ÜYE GİRİŞİ">
+    <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <link href="~/web/css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all">
+    <link href="~/web/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="//fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+
+</head>
+<body>
+    <div class="signupform">
+        <div class="container">
+            <div class="agile_info">
+                <div class="w3l_form">
+                    <div class="left_grid_info">
+                        <div style="text-align:center">
+                            <h1>ÜYE GİRİŞİ</h1>
+                        </div>
+                        <br />
+                        <img src="~/web/images/animals.jpg" alt="" />
+                    </div>
+                </div>
+                <div class="w3_info">
+                    <div style="text-align:center">
+                        <h2>GİRİŞ YAPINIZ</h2>
+                    </div>
+                    <hr />
+                    <br />
+                    <br />
+                    <h1 style="text-align:center;color:red;">@ViewBag.LoginError</h1>
+                    <form method="post">
+                        <label>E-Posta Adresiniz</label>
+                        <div class="input-group">
+                            <span class="fa fa-envelope" aria-hidden="true"></span>
+                            <input type="email" placeholder="E-Posta Adresinizi Giriniz" id="eposta" required="" name="KULLANICIEPOSTA">
+                        </div>
+                        <br />
+                        <label>Şifreniz</label>
+                        <div class="input-group">
+                            <span class="fa fa-lock" aria-hidden="true"></span>
+                            <input type="Password" placeholder="Şifrenizi Giriniz" required="" name="KULLANICISIFRE">
+                        </div>
+                        <textarea class="form-control" name="KULLANICIIP" style="display:none;" rows="5" required="">@Request.UserHostAddress</textarea>
+                        <br />
+                        <button class="btn btn-danger btn-block">Giriş Yap</button>
+                        <a class="btn btn-danger btn-block" href="/Guvenlik/YeniUye/">Üye Ol</a>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+        <br />
+        <br />
+    </div>
+</body>
+</html>
